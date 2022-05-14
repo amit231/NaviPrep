@@ -1,0 +1,16 @@
+{
+  "name": "grandproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "typescript": "^4.6.4"
+  }
+}
