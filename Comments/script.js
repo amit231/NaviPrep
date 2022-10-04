@@ -2,6 +2,7 @@ const form = document.querySelector(".comment__form");
 const like = document.querySelector(".like");
 const commentInput = document.getElementById("comment-input");
 const commentAuthorInput = document.getElementById("comment-author");
+
 window.onload = main;
 
 function removeAllChildNodes(parent) {
@@ -10,6 +11,7 @@ function removeAllChildNodes(parent) {
   }
 }
 
+// Model
 let comments = [
   {
     id: "12321",
@@ -43,6 +45,8 @@ let comments = [
   },
 ];
 
+
+// View
 class Comment {
   comments = [];
   root = null;
@@ -58,13 +62,11 @@ class Comment {
       containerDiv.id = singleComment.id;
       let childHTML = `
           <div class="comment__heading">${singleComment.author}</div>
-          <div class="comment__body" contenteditable="true">${
-            singleComment.comment
-          }</div>
+          <div class="comment__body" contenteditable="true">${singleComment.comment
+        }</div>
           <div class="comment__footer">
-            <div class="like">Like <span class="val">${
-              singleComment.likes
-            }<span></div>
+            <div class="like">Like <span class="val">${singleComment.likes
+        }<span></div>
             <div class="dislike">Dislike ${1000 - singleComment.likes}</div>
             ${`<div class="replies">Repies ${singleComment.comments.length}</div>`}
           </div>
@@ -124,9 +126,8 @@ class Comment {
   };
 }
 
-const bindedChange = function () {};
 
-// event listner
+// Controllers
 const onSubmit = function (e) {
   e.preventDefault();
   let comment = {
@@ -162,16 +163,17 @@ const onClick = function (e) {
       console.log("val,closest.id : ", this.val, closest.id);
       this.changeBody(closest.id, this.val);
     };
-    let bindedChange = change.bind(obj);
     target.addEventListener("input", (ev) => {
       obj.val = ev.target.innerText;
       // console.log("obj : ",);
     });
 
-    target.addEventListener("blur", bindedChange);
   }
 };
 
+
+
+// main functions
 function main() {
   const commentContainer = document.querySelector(".commets__container");
   let commentWidget = new Comment(comments);
